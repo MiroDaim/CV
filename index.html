@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miron Veaceslav CV</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #4361ee;
+      --secondary: #3a0ca3;
+      --accent: #cb0f0f;
+      --dark: #212529;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+      --card-bg: #ffffff;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+     /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+      padding-bottom: 4rem;
+      margin-bottom: 2rem;
+    }
+
+    .language-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .lang-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lang-btn:hover,
+    .lang-btn.active {
+      background: rgb(254, 255, 255);
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .profile-img {
+      width: 220px;
+      /* Увеличено с 150px */
+      height: 150x;
+      /* Увеличено с 150px */
+      border-radius: 50%;
+      object-fit:cover;
+      border: 5px solid white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      margin-bottom: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      color: white;
+      background: rgba(255, 255, 255, 0.2);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background: white;
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--primary);
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+      position: relative;
+      font-size: 1.4rem;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    /* Contact Info */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      color: var(--primary);
+      font-size: 1.1rem;
+      width: 36px;
+      height: 36px;
+      background: rgba(67, 97, 238, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Skills */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 0.8rem;
+    }
+
+    .skill {
+      background: rgba(67, 97, 238, 0.1);
+      padding: 0.6rem;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .skill:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background: var(--primary);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 1.5rem;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -22px;
+      top: 5px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+
+    .timeline-date {
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-title {
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    /* Progress Bars */
+    .progress-container {
+      margin-top: 1.2rem;
+    }
+
+    .progress-item {
+      margin-bottom: 0.8rem;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background: #e9ecef;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 45px;
+      height: 45px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 99;
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--accent);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+        padding-bottom: 3rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .card {
+        padding: 1.2rem;
+      }
+
+      .skills-container {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .language-switcher {
+        top: 10px;
+        right: 10px;
+      }
+
+      .profile-img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card::before {
+        width: 3px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="language-switcher">
+       <button class="lang-btn" data-lang="ro">RO</button>
+      <button class="lang-btn" data-lang="ru">RU</button>
+      <button class="lang-btn active" data-lang="en">EN</button>
+    </div>
+
+    <div class="profile-container">
+      <img src="My photo.png" alt="Miron Veaceslav" class="profile-img">
+      <h1 id="name">Miron Veaceslav</h1>
+      <p class="subtitle" id="subtitle">IT Administrator & Manager</p>
+
+      <div class="social-links">
+        <a href="tel:+37360376717" class="social-link">
+          <i class="fas fa-phone"></i>
+        </a>
+        <a href="mailto:slavikmiron95@gmail.com" class="social-link">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.facebook.com/slavik.miron.753679" target="_blank" class="social-link">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://t.me/slavikmiron" target="_blank" class="social-link">
+          <i class="fab fa-telegram-plane"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="grid">
+      <!-- About Me -->
+      <div class="card">
+        <h2 id="about_title">About Me</h2>
+        <p id="about_text">Experienced IT professional with skills in Linux administration, server configuration
+          and network equipment. Knowledgeable in virtualization, system optimization and cybersecurity
+          (currently undergoing Cisco certification). Have experience managing teams (up to 12 people) in
+          procurement and IT infrastructure.</p>
+      </div>
+      
+      <!-- Contact Info -->
+      <div class="card">
+        <h2 id="contact_title">Contact Information</h2>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <a href="tel:+37360376717" id="contact_phone">+373 60 376 717</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <a href="mailto:slavikmiron95@gmail.com" id="contact_email">slavikmiron95@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <span id="contact_location">mun. Chisinau, Moldova</span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-birthday-cake"></i>
+            </div>
+            <span id="contact_birthday">Born: August 18, 1995</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Skills -->
+      <div class="card">
+        <h2 id="skills_title">Technical Skills</h2>
+        <div class="skills-container">
+          <div class="skill" id="skill_linux">Linux Administration</div>
+          <div class="skill" id="skill_windows">Windows OS</div>
+          <div class="skill" id="skill_network">Networking</div>
+          <div class="skill" id="skill_virtualization">Virtualization</div>
+          <div class="skill" id="skill_database">Databases</div>
+          <div class="skill" id="skill_office">Office Software</div>
+          <div class="skill" id="skill_ai">AI Tools</div>
+          <div class="skill" id="skill_design">Graphic Design</div>
+          <div class="skill" id="skill_web">Web Development</div>
+          <div class="skill" id="skill_hardware">Hardware</div>
+          <div class="skill" id="skill_iptv">IPTV</div>
+          <div class="skill" id="skill_optimization">Optimization</div>
+        </div>
+
+        <h2 style="margin-top: 1.5rem;" id="soft_skills_title">Soft Skills</h2>
+        <div class="skills-container">
+          <div class="skill" id="skill_leadership">Leadership</div>
+          <div class="skill" id="skill_communication">Communication</div>
+          <div class="skill" id="skill_teamwork">Teamwork</div>
+          <div class="skill" id="skill_problemsolving">Problem Solving</div>
+          <div class="skill" id="skill_teaching">Teaching</div>
+          <div class="skill" id="skill_adaptability">Adaptability</div>
+        </div>
+
+        <h2 style="margin-top: 1.5rem;" id="qualities_title">Personal Qualities</h2>
+        <div class="skills-container">
+          <div class="skill" id="quality1">Analytical Thinking</div>
+          <div class="skill" id="quality2">Technical Aptitude</div>
+          <div class="skill" id="quality3">Team Leadership</div>
+          <div class="skill" id="quality4">Fast Learner</div>
+          <div class="skill" id="quality5">Problem Solver</div>
+          <div class="skill" id="quality6">Detail-Oriented</div>
+        </div>
+      </div>
+
+      <!-- Experience -->
+      <div class="card">
+        <h2 id="experience_title">Work Experience</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">Israel 2020-2023</div>
+            <h3 class="timeline-title" id="exp1_title">Team Leader</h3>
+            <p id="exp1_company">Intel (Sterile Rooms Installation)</p>
+            <p id="exp1_desc">Managed a team of 6 people, installed and configured sterile rooms for Intel. Responsible
+              for technical setup and team coordination.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Moldova 2017-2019</div>
+            <h3 class="timeline-title" id="exp2_title">Procurement Manager</h3>
+            <p id="exp2_company">Raw Materials Distribution</p>
+            <p id="exp2_desc">Led a team of 12 employees in procurement and distribution of raw materials. Managed
+              supply chain operations and team performance.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Freelance 2015-2017</div>
+            <h3 class="timeline-title" id="exp3_title">IT Consultant</h3>
+            <p id="exp3_company">Various Projects</p>
+            <p id="exp3_desc">Website development, system optimization, IT consulting. Built custom server station
+              maintaining 38°C idle temperature.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Education -->
+      <div class="card">
+        <h2 id="education_title">Education</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">01.09.2011 - 25.06.2015</div>
+            <h3 class="timeline-title" id="edu1_title">"Ștefan Neaga" Music-College</h3>
+            <p id="edu1_degree">Dancer-Choreographer, Theater Arts</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">ext - 26.06.2014</div>
+            <h3 class="timeline-title" id="edu2_title">Bachelor's Degree</h3>
+          </div>
+        </div>
+
+        <h2 style="margin-top: 1.5rem;" id="certifications_title">Certifications</h2>
+        <ul style="list-style-type: none;">
+          <li style="margin-bottom: 0.5rem;"><i class="fas fa-certificate"
+              style="color: var(--accent); margin-right: 0.5rem;"></i> <span id="cert4">Psychology(Certified)</span></li>
+          <li style="margin-bottom: 0.5rem;"><i class="fas fa-certificate"
+              style="color: var(--accent); margin-right: 0.5rem;"></i> <span id="cert5">Pedagogie (Certified)</span></li>
+          <li style="margin-bottom: 0.5rem;"><i class="fas fa-certificate"
+              style="color: var(--accent); margin-right: 0.5rem;"></i> <span id="cert6">Bulgarian Language
+              (Certified)</span></li>
+        </ul>
+      </div>
+
+      <!-- Languages -->
+      <div class="card">
+        <h2 id="languages_title">Languages</h2>
+        <div class="progress-container">
+          <div class="progress-item">
+            <div class="progress-info">
+              <span id="lang1_name">Russian</span>
+              <span id="lang1_level">Native (Certified)</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 100%;"></div>
+            </div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-info">
+              <span id="lang2_name">Romanian</span>
+              <span id="lang2_level">Native (Certified)</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 100%;"></div>
+            </div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-info">
+              <span id="lang3_name">Bulgarian</span>
+              <span id="lang3_level">Certified</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 90%;"></div>
+            </div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-info">
+              <span id="lang4_name">English</span>
+              <span id="lang4_level">A2</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 60%;"></div>
+            </div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-info">
+              <span id="lang5_name">Hebrew</span>
+              <span id="lang5_level">Conversational</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 50%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p id="footer_text">© 2023 Miron Veaceslav. All rights reserved.</p>
+  </footer>
+
+  <div class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script>
+    // Translations
+    const translations = {
+      en: {
+        "name": "Miron Veaceslav",
+        "subtitle": "IT Administrator & Manager",
+        "about_title": "About Me",
+        "about_text": "Experienced IT professional with skills in Linux administration, server configuration and network equipment. Knowledgeable in virtualization, system optimization and cybersecurity (currently undergoing Cisco certification). Have experience managing teams (up to 12 people) in procurement and IT infrastructure.",
+        "contact_title": "Contact Information",
+        "contact_phone": "+373 60 376 717",
+        "contact_email": "slavikmiron95@gmail.com",
+        "contact_location": "mun. Chisinau, Moldova",
+        "contact_birthday": "Born: August 18, 1995",
+        "skills_title": "Technical Skills",
+        "skill_linux": "Linux Administration",
+        "skill_windows": "Windows OS",
+        "skill_network": "Networking",
+        "skill_virtualization": "Virtualization",
+        "skill_database": "Databases",
+        "skill_office": "Office Software",
+        "skill_ai": "AI Tools",
+        "skill_design": "Graphic Design",
+        "skill_web": "Web Development",
+        "skill_hardware": "Hardware",
+        "skill_iptv": "IPTV",
+        "skill_optimization": "Optimization",
+        "soft_skills_title": "Soft Skills",
+        "skill_leadership": "Leadership",
+        "skill_communication": "Communication",
+        "skill_teamwork": "Teamwork",
+        "skill_problemsolving": "Problem Solving",
+        "skill_teaching": "Teaching",
+        "skill_adaptability": "Adaptability",
+        "experience_title": "Work Experience",
+        "exp1_title": "Team Leader",
+        "exp1_company": "Intel (Sterile Rooms Installation)",
+        "exp1_desc": "Managed a team of 6 people, installed and configured sterile rooms for Intel. Responsible for technical setup and team coordination.",
+        "exp2_title": "Procurement Manager",
+        "exp2_company": "Raw Materials Distribution",
+        "exp2_desc": "Led a team of 12 employees in procurement and distribution of raw materials. Managed supply chain operations and team performance.",
+        "exp3_title": "IT Consultant",
+        "exp3_company": "Various Projects",
+        "exp3_desc": "Website development, system optimization, IT consulting. Built custom server station maintaining 38°C idle temperature.",
+        "education_title": "Education",
+        "edu1_title": " Ștefan Neaga Music-College",
+        "edu1_degree": "Dancer-Choreographer, Theater Arts",
+        "edu2_title": "Bachelor's Degree",
+        "certifications_title": "Certifications",
+        "cert4": "Psychology(Certified)",
+        "cert5": "Pedagogy (Certified)",
+        "cert6": "Bulgarian Language (Certified)",
+        
+        "languages_title": "Languages",
+        "lang1_name": "Russian",
+        "lang1_level": "Native (Certified)",
+        "lang2_name": "Romanian",
+        "lang2_level": "Native (Certified)",
+        "lang3_name": "Bulgarian",
+        "lang3_level": "Certified",
+        "lang4_name": "English",
+        "lang4_level": "A2",
+        "lang5_name": "Hebrew",
+        "lang5_level": "Conversational",
+        "qualities_title": "Personal Qualities",
+        "quality1": "Analytical Thinking",
+        "quality2": "Technical Aptitude",
+        "quality3": "Team Leadership",
+        "quality4": "Fast Learner",
+        "quality5": "Problem Solver",
+        "quality6": "Detail-Oriented",
+        "footer_text": "© 2023 Miron Veaceslav. All rights reserved."
+      },
+      ru: {
+        "name": "Мирон Веачеслав",
+        "subtitle": "IT Администратор и Менеджер",
+        "about_title": "Обо мне",
+        "about_text": "Опытный IT-специалист с навыками администрирования Linux/Windows,(настройки серверов и сетевого оборудования). Обладаю знаниями в области виртуализации,оптимизации систем и кибербезопасности (в настоящее время прохожу сертификацию Cisco). Имею опыт управления командами (до 12 человек) в сфере Закупок и IT-инфраструктуры.",
+        "contact_title": "Контактная информация",
+        "contact_phone": "+373 60 376 717",
+        "contact_email": "slavikmiron95@gmail.com",
+        "contact_location": "Кишинев, Молдова",
+        "contact_birthday": "Дата рождения: 18 августа 1995",
+        "skills_title": "Технические навыки",
+        "skill_linux": "Администрирование Linux",
+        "skill_windows": "Windows ОС",
+        "skill_network": "Сети",
+        "skill_virtualization": "Виртуализация",
+        "skill_database": "Базы данных",
+        "skill_office": "Офисные программы",
+        "skill_ai": "ИИ инструменты",
+        "skill_design": "Графический дизайн",
+        "skill_web": "Веб-разработка",
+        "skill_hardware": "Железо",
+        "skill_iptv": "IPTV",
+        "skill_optimization": "Оптимизация",
+        "soft_skills_title": "Гибкие навыки",
+        "skill_leadership": "Лидерство",
+        "skill_communication": "Коммуникация",
+        "skill_teamwork": "Командная работа",
+        "skill_problemsolving": "Решение проблем",
+        "skill_teaching": "Преподавание",
+        "skill_adaptability": "Адаптивность",
+        "experience_title": "Опыт работы",
+        "exp1_title": "Руководитель команды",
+        "exp1_company": "Intel (Установка стерильных комнат)",
+        "exp1_desc": "Управлял командой из 6 человек, устанавливал и настраивал стерильные комнаты для Intel. Отвечал за техническую настройку и координацию команды.",
+        "exp2_title": "Менеджер по закупкам",
+        "exp2_company": "Распределение сырья",
+        "exp2_desc": "Руководил командой из 12 сотрудников по закупкам и распределению сырья. Управлял цепочками поставок и работой команды.",
+        "exp3_title": "IT Консультант",
+        "exp3_company": "Различные проекты",
+        "exp3_desc": "Разработка веб-сайтов, оптимизация систем, IT-консалтинг. Построил пользовательскую серверную станцию с температурой простоя 38°C.",
+        "education_title": "Образование",
+        "edu1_title": "Музыкальный колледж Штефана Неги",
+        "edu1_degree": "Танцор-хореограф, Театральное искусство",
+        "edu2_title": "Степень бакалавра",
+        "certifications_title": "Сертификаты",
+        "cert4": "Психология (Сертифицирован)",
+        "cert5": "Педагогика (Сертифицирован)",
+        "cert6": "Болгарский язык (Сертифицирован)",
+        
+        "languages_title": "Языки",
+        "lang1_name": "Русский",
+        "lang1_level": "Родной (Сертифицирован)",
+        "lang2_name": "Румынский",
+        "lang2_level": "Родной (Сертифицирован)",
+        "lang3_name": "Болгарский",
+        "lang3_level": "Сертифицирован",
+        "lang4_name": "Английский",
+        "lang4_level": "A2",
+        "lang5_name": "Иврит",
+        "lang5_level": "Разговорный",
+        "qualities_title": "Личные качества",
+        "quality1": "Аналитическое мышление",
+        "quality2": "Технические способности",
+        "quality3": "Лидерство в команде",
+        "quality4": "Быстрое обучение",
+        "quality5": "Решение проблем",
+        "quality6": "Внимание к деталям",
+        "footer_text": "© 2023 Мирон Вяачеслав. Все права защищены."
+      },
+      ro: {
+        "name": "Miron Veaceslav",
+        "subtitle": "Administrator IT & Manager",
+        "about_title": "Despre mine",
+        "about_text": "Specialist IT cu experiență, cu abilități în administrarea Linux (configurarea serverelor și echipamentelor de rețea). Dețin cunoștințe în virtualizare, optimizarea sistemelor și securitate cibernetică (în prezent urmez certificarea Cisco). Am experiență în coordonarea echipelor (până la 12 persoane) în domeniul achizițiilor și infrastructurii IT.",
+        "contact_title": "Informații de contact",
+        "contact_phone": "+373 60 376 717",
+        "contact_email": "slavikmiron95@gmail.com",
+        "contact_location": "mun. Chișinău, Moldova",
+        "contact_birthday": "Data nașterii: 18 august 1995",
+        "skills_title": "Competențe tehnice",
+        "skill_linux": "Administrare Linux",
+        "skill_windows": "Sisteme Windows",
+        "skill_network": "Rețele",
+        "skill_virtualization": "Virtualizare",
+        "skill_database": "Baze de date",
+        "skill_office": "Software office",
+        "skill_ai": "Instrumente AI",
+        "skill_design": "Design grafic",
+        "skill_web": "Dezvoltare web",
+        "skill_hardware": "Hardware",
+        "skill_iptv": "IPTV",
+        "skill_optimization": "Optimizare",
+        "soft_skills_title": "Competențe personale",
+        "skill_leadership": "Leadership",
+        "skill_communication": "Comunicare",
+        "skill_teamwork": "Lucru în echipă",
+        "skill_problemsolving": "Rezolvare probleme",
+        "skill_teaching": "Predare",
+        "skill_adaptability": "Adaptabilitate",
+        "experience_title": "Experiență profesională",
+        "exp1_title": "Lider de echipă",
+        "exp1_company": "Intel (Instalare camere sterile)",
+        "exp1_desc": "Am condus o echipă de 6 persoane, am instalat și configurat camere sterile pentru Intel. Responsabil de configurarea tehnică și coordonarea echipei.",
+        "exp2_title": "Manager achiziții",
+        "exp2_company": "Distribuție materii prime",
+        "exp2_desc": "Am condus o echipă de 12 angajați în achiziții și distribuție de materii prime. Am gestionat operațiunile din lanțul de aprovizionare și performanța echipei.",
+        "exp3_title": "Consultant IT",
+        "exp3_company": "Diverse proiecte",
+        "exp3_desc": "Dezvoltare site-uri web, optimizare sisteme, consultanță IT. Am construit o stație server personalizată care menține o temperatură de ralanti de 38°C.",
+        "education_title": "Educație",
+        "edu1_title": "Colegiul de Muzică Ștefan Neaga",
+        "edu1_degree": "Dansator-coregraf, Arte teatrale",
+        "edu2_title": "Licență",
+        "certifications_title": "Certificări",
+        "cert4": "Psihologie (Certificat)",
+        "cert5": "Pedagogie (Certificat)",
+        "cert6": "Limba Bulgară (Certificat)",
+        
+        "languages_title": "Limbi",
+        "lang1_name": "Rusă",
+        "lang1_level": "Nativ (Certificat)",
+        "lang2_name": "Română",
+        "lang2_level": "Nativ (Certificat)",
+        "lang3_name": "Bulgară",
+        "lang3_level": "Certificat",
+        "lang4_name": "Engleză",
+        "lang4_level": "A2",
+        "lang5_name": "Ebraică",
+        "lang5_level": "Conversațional",
+        "qualities_title": "Calități personale",
+        "quality1": "Gândire analitică",
+        "quality2": "Aptitudini tehnice",
+        "quality3": "Leadership în echipă",
+        "quality4": "Învățare rapidă",
+        "quality5": "Rezolvare probleme",
+        "quality6": "Orientat pe detalii",
+        "footer_text": "© 2023 Miron Veaceslav. Toate drepturile rezervate."
+      }
+    };
+
+    // Language switching
+    document.addEventListener('DOMContentLoaded', function() {
+      const langButtons = document.querySelectorAll('.lang-btn');
+      
+      function setLanguage(lang) {
+        if (translations[lang]) {
+          for (const key in translations[lang]) {
+            const element = document.getElementById(key);
+            if (element) {
+              element.textContent = translations[lang][key];
+            }
+          }
+        }
+      }
+
+      langButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          langButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          setLanguage(this.dataset.lang);
+        });
+      });
+
+      // Set initial language based on browser preference
+      const userLang = navigator.language.substring(0, 2);
+      if (userLang === 'ru' || userLang === 'ro') {
+        document.querySelector(`.lang-btn[data-lang="${userLang}"]`).click();
+      }
+    });
+
+    // Back to top button
+    window.addEventListener('scroll', function() {
+      const backToTop = document.querySelector('.back-to-top');
+      backToTop.classList.toggle('active', window.pageYOffset > 300);
+    });
+
+    document.querySelector('.back-to-top').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  </script>
+</body>
+
+</html>
